@@ -129,13 +129,15 @@ with open('knapsack_input.txt', 'r') as file, open('knapsack_output.txt', 'w') a
         with open('knapsack_output.txt', 'a') as o:
             o.write(f'Test case {i+1}:\n\n')
             o.close()
-        file.readline()
-        file.readline()
-        knapsize = int(file.readline()) 
-        num_items = int(file.readline()) 
+        inp = file.readline()
+        while inp == '\n':
+            inp = file.readline()
+        knapsize = int(inp)
+        inp = file.readline()
+        num_items = int(inp) 
         items = [] 
         for j in range(num_items): 
-            value, weight = map(int, file.readline().split()) 
-            items.append((value, weight)) 
+            weight, value = map(int, file.readline().split()) 
+            items.append((weight, value)) 
         genetic_algorithm()
     file.close()
